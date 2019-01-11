@@ -1,0 +1,30 @@
+     
+
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>
+      Mapa
+    </ion-title>
+  </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-searchbar placeholder="Do que você precisa?" (ionInput)="searchList($event)"></ion-searchbar>
+
+    <div padding>
+    
+          <button ion-button full clear color="dark" [navPush]="listaPage">Ver Lista</button>
+  
+    </div>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+
+  <div #pleaseConnect id="please-connect">
+    <p>Please connect to the Internet...</p>
+  </div>
+
+  <div #map id="map"></div>
+</ion-content>

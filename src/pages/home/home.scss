@@ -1,3 +1,78 @@
 page-home {
 
 }
+
+page-home ion-header {
+    background-color: red;
+}
+h1{
+    color: #77bbc9;
+    text-align: center;
+    background-color: white;
+}
+.toolbar-background{
+    background-color: #77bbc9;
+}
+.toolbar-title, .back-button{
+ color: white;
+}
+.bar-buttons{
+    display:table !important;
+    background-color: white !important;
+}
+.ion-md-menu {
+
+    display: inline-block;
+    font-size: 3.3em !important;
+
+}
+.logojl b{position: relative;top: -15px;}
+.logojl{padding-top: 7px;}
+.iconjl{
+    font-size: 2.2em !important;
+}
+.categoria{color:#77bbc9}
+.local{font-size:0.7em !important;}
+.recomendacao{
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    font-size: 1.8em;
+    width: 30px;
+    color: #77bbc9;
+}
+.swiper-pagination-bullet-active {
+    background:white;
+}
+
+.intro {
+        text-align: center;
+        border-bottom: 1px solid #e2e2e2;
+        padding-bottom: 14px;
+}
+
+.btn_container {
+    padding-top: 14px;
+
+    button {
+        background: #3b5998;
+    }
+}   
+.slide-zoom{background-color: rgba(90, 145, 156, 0.32);}
+fieldset{
+    border: solid white;
+    color: #77bbc9;
+}
+.list-md .item-input:last-child{border: 0px solid; margin-bottom:20px;}
+.perfil img{
+    margin: auto;
+    border: solid 3px white;
+}
+.perfil h2{
+    text-align: center !important;
+    color: white !important;
+    text-shadow: 1px 1px #333;
+}
+.perfil .toolbar-background{
+    background: url('https://wallpapercave.com/wp/jgj6Feb.jpg') 50% 70% #526165;
+}

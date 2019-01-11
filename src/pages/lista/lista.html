@@ -1,0 +1,75 @@
+<ion-header>
+
+  <ion-navbar>
+   
+    <button menuToggle right class="back-button-md">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    
+    <ion-title>
+      Lista
+    </ion-title>
+   
+  </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-searchbar placeholder="Do que você precisa?" (ionInput)="searchList($event)"></ion-searchbar>
+
+    <div padding>
+     
+          <button ion-button full clear color="dark" [navPush]="mapPage">Ver Mapa</button>
+      
+    </div>
+
+  </ion-toolbar>
+
+
+</ion-header>
+
+
+<ion-menu [content]="mycontent">
+
+  <ion-header>
+  
+    <ion-toolbar no-border-top class="perfil">
+      <ion-avatar item-start >
+          <img src="https://ionicframework.com/dist/preview-app/www/assets/img/avatar-ts-buzz.png">
+      </ion-avatar>
+      <h2>Natan Ferreira</h2>  
+    </ion-toolbar>
+
+
+  </ion-header>
+
+  <ion-content padding>
+    <ion-list>
+      <ion-item *ngFor="let categoria of categorias">
+
+        <h2>{{ categoria.name }} </h2>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #mycontent [root]="rootPage"></ion-nav>
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item *ngFor="let location of locations.data">
+    
+        <ion-avatar item-start>
+          <img src="https://ionicframework.com/dist/preview-app/www/assets/img/avatar-ts-buzz.png">
+        </ion-avatar>
+        <h2>{{ location.title }}</h2>  
+        <p class="local">SP, São Paulo, Tatuapé</p>
+        <p class="categoria local">Monitor de festa</p>
+        <p class="local"> Distancia {{ location.distance }}</p>
+
+        <div class="recomendacao">
+           <ion-icon name="md-text"></ion-icon>
+        </div>
+
+    </ion-item>
+  </ion-list>
+</ion-content>

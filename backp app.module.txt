@@ -1,0 +1,136 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { ErrorHandler, NgModule } from '@angular/core';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
+import { Facebook } from '@ionic-native/facebook';
+import { Geolocation } from '@ionic-native/geolocation';
+import { Network } from '@ionic-native/network';
+import { Platform } from 'ionic-angular';
+
+import { MyApp } from './app.component';
+import { HomePage } from '../pages/home/home';
+import { LoginPage } from '../pages/login/login';
+import { CadastroPage } from '../pages/cadastro/cadastro';
+import { ListaPage } from '../pages/lista/lista';
+import { MapPage } from '../pages/map/map';
+
+import { ListaProvider } from '../providers/lista/lista';
+import { ConnectivityProvider } from '../providers/connectivity/connectivity';
+import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
+import { LocationsProvider } from '../providers/locations/locations';
+
+
+@NgModule({
+  declarations: [
+    MyApp,
+    HomePage,
+    LoginPage,
+    CadastroPage,
+    MapPage,
+    ListaPage
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    IonicModule.forRoot(MyApp)
+  ],
+  exports: [],
+  bootstrap: [IonicApp],
+  entryComponents: [
+    MyApp,
+    HomePage,
+    LoginPage,
+    CadastroPage,
+    MapPage,
+    ListaPage
+  ],
+  providers: [
+    Geolocation,
+    Network,
+    Platform,
+    Facebook,
+    StatusBar,
+    SplashScreen,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ListaProvider,
+    ConnectivityProvider,
+    GoogleMapsProvider,
+    LocationsProvider
+  ]
+})
+export class AppModule {}
+
+
+
+<!--
+<ion-header>
+
+  <ion-navbar>
+   
+    <button menuToggle right class="back-button-md">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    
+    <ion-title>
+      Lista
+    </ion-title>
+   
+  </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-searchbar placeholder="Do que você precisa?" (ionInput)="searchList($event)"></ion-searchbar>
+  </ion-toolbar>
+
+
+</ion-header>
+
+
+<ion-menu [content]="mycontent">
+
+  <ion-header>
+  
+    <ion-toolbar no-border-top class="perfil">
+      <ion-avatar item-start >
+          <img src="https://ionicframework.com/dist/preview-app/www/assets/img/avatar-ts-buzz.png">
+      </ion-avatar>
+      <h2>Natan Ferreira</h2>  
+    </ion-toolbar>
+
+
+  </ion-header>
+
+  <ion-content padding>
+    <ion-list>
+      <ion-item *ngFor="let categoria of categorias">
+
+        <h2>{{ categoria.name }} </h2>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #mycontent [root]="rootPage"></ion-nav>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let lista of listas">
+    
+        <ion-avatar item-start>
+          <img src="https://ionicframework.com/dist/preview-app/www/assets/img/avatar-ts-buzz.png">
+        </ion-avatar>
+        <h2>{{ lista.name }} {{ lista.lastname }}</h2>  
+        <p class="local">{{ lista.address }}</p>
+        <p class="categoria local">{{ lista.categoria }}</p>
+        <p class="local"> Distancia {{ currentPos }}</p>
+
+        <div class="recomendacao">
+           <ion-icon name="md-text"></ion-icon>
+        </div>
+
+    </ion-item>
+  </ion-list>
+  <button ion-button full clear color="light" [navPush]="mapPage">JÁ POSSUO CADASTRO</button>
+</ion-content>
+-->
