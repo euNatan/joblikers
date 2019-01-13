@@ -17,9 +17,10 @@ export class MapPage {
 
   listaPage = ListaPage
   categorias:any;
+  locations:any;
 
-  constructor(public navCtrl: NavController, public maps: GoogleMapsProvider, public platform: Platform, public locations: LocationsProvider) {
-    this.categorias = locations.getCategorias();
+  constructor(public navCtrl: NavController, public maps: GoogleMapsProvider, public platform: Platform, public _locations: LocationsProvider) {
+    this.categorias = _locations.getCategorias();
   }
 
   ionViewDidLoad(){
@@ -27,16 +28,16 @@ export class MapPage {
       this.platform.ready().then(() => {
 
           let mapLoaded = this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement);
-          let locationsLoaded = this.locations.load();
+          let locationsLoaded = this._locations.load();
           console.log(locationsLoaded);
           Promise.all([
               mapLoaded,
               locationsLoaded
           ]).then((result) => {
                    
-              let locations = result[1];
+              this.locations = result[1];
 
-              for(let location of locations){
+              for(let location of this.locations){
                   this.maps.addMarker(location.latitude, location.longitude);
               }
 

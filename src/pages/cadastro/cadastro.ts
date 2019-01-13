@@ -17,6 +17,8 @@ import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 export class CadastroPage {
 
   profile:any = {}
+  fb_id:any = 0;
+  fb_token:string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public fb: Facebook) {}
 
@@ -33,8 +35,8 @@ export class CadastroPage {
         if(res.status == "connected") {
 
             // Get user ID and Token
-            var fb_id = res.authResponse.userID;
-            var fb_token = res.authResponse.accessToken;
+            this.fb_id = res.authResponse.userID;
+            this.fb_token = res.authResponse.accessToken;
 
             // Get user infos from the API
             this.fb.api("/me?fields=name,email", []).then((user) => {
