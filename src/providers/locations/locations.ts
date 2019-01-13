@@ -6,23 +6,25 @@ import 'rxjs/add/operator/map';
 export class LocationsProvider {
 
     data: any;
-
+    
     constructor(public http: HttpClient) {
 
     }
 
-    load(){
-        this.http.get('/assets/data/locations.json').map(res => res).subscribe(data => {
-
-            this.data = this.applyHaversine((data as any).locations);
-
-            this.data.sort((locationA, locationB) => {
-                return locationA.distance - locationB.distance;
+    load() {
+        if (this.data) {
+          return Promise.resolve(this.data);
+        }
+     
+        return new Promise(resolve => {
+          this.http.get("/assets/data/locations.json")
+            .map(res => res)
+            .subscribe(data => {
+              this.data = data;
+              resolve(this.data);
             });
-             
-        }); 
-    }       
-   
+        });
+      }
 
 
     applyHaversine(locations){
@@ -42,7 +44,7 @@ export class LocationsProvider {
             location.distance = this.getDistanceBetweenPoints(
                 usersLocation,
                 placeLocation,
-                'miles'
+                'km'
             ).toFixed(2);
         });
 

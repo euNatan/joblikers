@@ -17,38 +17,33 @@ export class MapPage {
 
   listaPage = ListaPage
   categorias:any;
-  locations:any;
 
-  constructor(public navCtrl: NavController, public maps: GoogleMapsProvider, public platform: Platform, public _locations: LocationsProvider) {
-    this.categorias = _locations.getCategorias();
+  constructor(public navCtrl: NavController, public maps: GoogleMapsProvider, public platform: Platform, public locations: LocationsProvider) {
+    this.categorias = this.locations.getCategorias();
   }
 
-  ionViewDidLoad(){
+    ionViewDidLoad(){
 
-      this.platform.ready().then(() => {
+        this.platform.ready().then(() => {
 
-          let mapLoaded = this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement);
-          let locationsLoaded = this._locations.load();
-          console.log(locationsLoaded);
-          Promise.all([
-              mapLoaded,
-              locationsLoaded
-          ]).then((result) => {
-                   
-              this.locations = result[1];
+            let mapLoaded = this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement);
+            let locationsLoaded = this.locations.load();
 
-              for(let location of this.locations){
-                  this.maps.addMarker(location.latitude, location.longitude);
-              }
+            Promise.all([
+                mapLoaded,
+                locationsLoaded
+            ]).then((result) => {
+                let locations = result[1].locations;
+                for(let location of locations){
+                    this.maps.addMarker(location.latitude, location.longitude);
+                }
 
-          }).catch(e => {
-            console.log(e);
-          });
+            });
 
-      });
+        });
 
-  }
+    }
+
 
 }
-
 

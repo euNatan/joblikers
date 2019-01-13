@@ -161,7 +161,6 @@ export class GoogleMapsProvider {
   addMarker(lat: number, lng: number): void {
 
     let latLng = new google.maps.LatLng(lat, lng);
-
     let marker = new google.maps.Marker({
       map: this.map,
       animation: google.maps.Animation.DROP,

@@ -17,7 +17,7 @@
 
     <div padding>
      
-          <button ion-button full clear color="dark" [navPush]="mapPage">Ver Mapa</button>
+          <button ion-button full clear color="danger" [navPush]="mapPage">Ver Mapa</button>
       
     </div>
 
@@ -56,7 +56,7 @@
 <ion-content padding>
 
   <ion-list>
-    <ion-item *ngFor="let location of locations.data">
+    <ion-item *ngFor="let location of locations">
     
         <ion-avatar item-start>
           <img src="https://ionicframework.com/dist/preview-app/www/assets/img/avatar-ts-buzz.png">
