@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+
+import { ContactsProvider } from '../../providers/contacts/contacts'
+import { Contact } from '../../models/contact'
 
 /**
  * Generated class for the CadastroPage page.
@@ -19,12 +23,29 @@ export class CadastroPage {
   profile:any = {}
   fb_id:any = 0;
   fb_token:string;
+  contacts:Contact[] = [];
+  private formContact: FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public fb: Facebook) {}
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CadastroPage');
-  }
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
+              public fb: Facebook, 
+              public _contact: ContactsProvider,
+              public toast: ToastController,
+              private formBuilder: FormBuilder
+              ) {
+                  this.formContact = this.formBuilder.group({
+                    id: [],
+                    name: [],
+                    email: [],
+                    password: [],
+                    state: [],
+                    city: [],
+                    neighborhood: [],
+                    cpf: [],
+                    genre: [],
+                    phone: []
+                  });
+              }
 
   loginAction(){
     // Login with permissions
@@ -62,5 +83,17 @@ export class CadastroPage {
         console.log('Error logging into Facebook', e);
     });
   }
+
+  onCreateContact() {
+    this._contact
+      .createContact(this.formContact.value)
+      .subscribe(
+        (newContact) => {
+          console.log(newContact);  
+          //this.contacts = this.contacts.concat(newContact);
+        }
+      );
+  }
+
 
 }

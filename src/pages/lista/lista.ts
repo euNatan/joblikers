@@ -12,11 +12,19 @@ import { LocationsProvider } from '../../providers/locations/locations';
 export class ListaPage {
   mapPage = MapPage
   categorias:any;
+  lista:any;
 
-  constructor(public navCtrl: NavController, public locations: LocationsProvider) {
-    this.categorias = locations.getCategorias();
+  constructor(public navCtrl: NavController, public _locations: LocationsProvider) {
+
+    let locationsLoaded = this._locations.load();
+
+    Promise.all([
+        locationsLoaded
+    ]).then((result) => {
+        this.lista = result[0].locations;
+    });
+    
   }
-
 
   ionViewDidLoad() {
     

@@ -6,6 +6,8 @@ import 'rxjs/add/operator/map';
 export class LocationsProvider {
 
     data: any;
+    cat: any;
+    user: any;
     
     constructor(public http: HttpClient) {
 
@@ -82,22 +84,18 @@ export class LocationsProvider {
     }
 
     public getCategorias(){
-        let cats = [
-        {id:1, name:"Montador(a) de móveis"},
-        {id:2, name:"Churrasqueiro(a)"},
-        {id:2, name:"Cuidador(a) de cães"},
-        {id:2, name:"Eletricista"},
-        {id:2, name:"Pedreiro"},
-        {id:2, name:"Manutenção de Computadores"},
-        {id:2, name:"Monitor(a) de Crianças"},
-        {id:2, name:"Garçon"},
-        {id:2, name:"Ajudante de obras"},
-        {id:2, name:"Manicure"},
-        {id:2, name:"Pedicure"},
-        {id:2, name:"Maquiador(a)"},
-        {id:2, name:"Carona"}
-        ]
-        return cats;
+        if (this.cat) {
+          return Promise.resolve(this.cat);
+        }
+     
+        return new Promise(resolve => {
+          this.http.get("http://localhost:3000/api/v1/categories.js")
+            .map(res => res)
+            .subscribe(data => {
+              this.cat = data;
+              resolve(this.cat);
+            });
+        });
     }
 
 }

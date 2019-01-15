@@ -22,67 +22,69 @@
       <button ion-button full (click)="loginAction();">Importar dados do Facebook</button>
     </ion-col>
 
-    <ion-list>
-      <fieldset>  
-        <legend>Dados de Usuario</legend>
+    <form [formGroup]="formContact" (ngSubmit)="onCreateContact()" >
+      <ion-list>
+        <fieldset>  
+          <legend>Dados de Usuario</legend>
 
-        <ion-item>
-          <ion-label stacked>Nome Completo</ion-label>
-          <ion-input type="text" [value]="profile.name"></ion-input>
-        </ion-item>
+          <ion-item>
+            <ion-label stacked>Nome Completo</ion-label>
+            <ion-input type="text" [value]="profile.name" formControlName="name" name="name"></ion-input>
+          </ion-item>
 
-        <ion-item>
-          <ion-label stacked>Email</ion-label>
-          <ion-input type="email" [value]="profile.email"></ion-input>
-        </ion-item>
+          <ion-item>
+            <ion-label stacked>Email</ion-label>
+            <ion-input type="email" [value]="profile.email" formControlName="email" name="email"></ion-input>
+          </ion-item>
 
-        <ion-item>
-          <ion-label stacked>Senha</ion-label>
-          <ion-input type="password"></ion-input>
-        </ion-item>
-      </fieldset>
+          <ion-item>
+            <ion-label stacked>Senha</ion-label>
+            <ion-input type="password" formControlName="password" name="password"></ion-input>
+          </ion-item>
+        </fieldset>
 
-      <fieldset>  
-        <legend>Sua localização</legend>
-        
-        <ion-item>
-          <ion-label stacked>Estado</ion-label>
-          <ion-input type="text" [value]="profile.name"></ion-input>
-        </ion-item>
+        <fieldset>  
+          <legend>Sua localização</legend>
+          
+          <ion-item>
+            <ion-label stacked>Estado</ion-label>
+            <ion-input type="text" [value]="profile.name" formControlName="state" name="state"></ion-input>
+          </ion-item>
 
-        <ion-item>
-          <ion-label stacked>Cidade</ion-label>
-          <ion-input type="email" [value]="profile.email"></ion-input>
-        </ion-item>
+          <ion-item>
+            <ion-label stacked>Cidade</ion-label>
+            <ion-input type="texte" [value]="profile.email" formControlName="city" name="city"></ion-input>
+          </ion-item>
 
-        <ion-item>
-          <ion-label stacked>Bairro</ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
-      </fieldset>   
+          <ion-item>
+            <ion-label stacked>Bairro</ion-label>
+            <ion-input type="text" formControlName="neighborhood" name="neighborhood"></ion-input>
+          </ion-item>
+        </fieldset>   
 
-      <fieldset>  
-        <legend>Dados Pessoais</legend>
-        
-        <ion-item>
-          <ion-label stacked>CPF</ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
+        <fieldset>  
+          <legend>Dados Pessoais</legend>
+          
+          <ion-item>
+            <ion-label stacked>CPF</ion-label>
+            <ion-input type="text" formControlName="cpf" name="cpf"></ion-input>
+          </ion-item>
 
-        <ion-item>
-          <ion-label stacked>Sexo</ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
+          <ion-item>
+            <ion-label stacked>Sexo</ion-label>
+            <ion-input type="text" formControlName="genre" name="genre"></ion-input>
+          </ion-item>
 
-        <ion-item>
-          <ion-label stacked>DDD + Telefone</ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item> 
-       </fieldset>
-         
-    </ion-list>
+          <ion-item>
+            <ion-label stacked>DDD + Telefone</ion-label>
+            <ion-input type="text" formControlName="phone" name="phone"></ion-input>
+          </ion-item> 
+        </fieldset>
+      
+      </ion-list>
 
-    <div padding>
-      <button ion-button full color="sky">ENTRAR</button>
-    </div>
+      <div padding>
+        <button ion-button type="submit" [disabled]="!formContact.valid" block full color="sky">ENTRAR</button>
+      </div>
+    </form>  
 </ion-content>

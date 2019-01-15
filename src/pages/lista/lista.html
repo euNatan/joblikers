@@ -17,7 +17,7 @@
 
     <div padding>
      
-          <button ion-button full clear color="danger" [navPush]="mapPage">Ver Mapa</button>
+          <button ion-button full color="primary" [navPush]="mapPage">Ver no Mapa</button>
       
     </div>
 
@@ -26,37 +26,10 @@
 
 </ion-header>
 
-
-<ion-menu [content]="mycontent">
-
-  <ion-header>
-  
-    <ion-toolbar no-border-top class="perfil">
-      <ion-avatar item-start >
-          <img src="https://ionicframework.com/dist/preview-app/www/assets/img/avatar-ts-buzz.png">
-      </ion-avatar>
-      <h2>Natan Ferreira</h2>  
-    </ion-toolbar>
-
-
-  </ion-header>
-
-  <ion-content padding>
-    <ion-list>
-      <ion-item *ngFor="let categoria of categorias">
-
-        <h2>{{ categoria.name }} </h2>
-      </ion-item>
-    </ion-list>
-  </ion-content>
-</ion-menu>
-
-<ion-nav #mycontent [root]="rootPage"></ion-nav>
-
 <ion-content padding>
 
   <ion-list>
-    <ion-item *ngFor="let location of locations">
+    <ion-item *ngFor="let location of lista">
     
         <ion-avatar item-start>
           <img src="https://ionicframework.com/dist/preview-app/www/assets/img/avatar-ts-buzz.png">

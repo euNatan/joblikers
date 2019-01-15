@@ -1,22 +1,28 @@
-     
-
 <ion-header>
-  <ion-navbar color="secondary">
+
+  <ion-navbar>
+   
+    <button menuToggle right class="back-button-md">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    
     <ion-title>
       Mapa
     </ion-title>
+   
   </ion-navbar>
 
   <ion-toolbar no-border-top>
     <ion-searchbar placeholder="Do que você precisa?" (ionInput)="searchList($event)"></ion-searchbar>
 
     <div padding>
-    
-          <button ion-button full clear color="danger" [navPush]="listaPage">Ver Lista</button>
-  
+     
+          <button ion-button full color="primary" [navPush]="listaPage">Ver em Lista</button>
+      
     </div>
 
   </ion-toolbar>
+
 
 </ion-header>
 

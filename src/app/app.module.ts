@@ -18,6 +18,8 @@ import { CadastroPage } from '../pages/cadastro/cadastro';
 import { LocationsProvider } from '../providers/locations/locations';
 import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
 import { ConnectivityProvider } from '../providers/connectivity/connectivity';
+import { ContactsProvider } from '../providers/contacts/contacts';
+import { Contact } from '../models/contact'
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { ConnectivityProvider } from '../providers/connectivity/connectivity';
     Facebook,
     Network,
     Geolocation,
-    { provide: ErrorHandler, useClass: IonicErrorHandler}, LocationsProvider, GoogleMapsProvider, ConnectivityProvider
+    { provide: ErrorHandler, useClass: IonicErrorHandler}, LocationsProvider, GoogleMapsProvider, ConnectivityProvider,
+    ContactsProvider, 
   ]
 })
 export class AppModule {}
