@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -17,13 +17,22 @@ import 'rxjs/add/observable/throw';
 @Injectable()
 export class ContactsProvider {
 
-  constructor(public http: HttpClient) {}
   baseUrl:string = "http://localhost:3000/api/v1";
+  headers = new HttpHeaders(
+  {
+    'Content-Type' : 'application/json',
+    'X-User-Email' : 'teste@teste.com',
+    'X-User-Token' : 'XNXJsstqSD5nEkp4NzG4'
+  });
+  
+
+  constructor(public http: HttpClient) {}
+  
 
   // Sending a GET request to /contact
   public getContacts(): Observable<Contact[]> {
     return this.http
-      .get(this.baseUrl + '/contacts.json')
+      .get(this.baseUrl + '/contacts.json', { headers: this.headers} )
       .map(response => {
         return response.map((contact) => new Contact(contact));
       })
@@ -33,10 +42,11 @@ export class ContactsProvider {
       });
   }
 
+
   // Sending a POST request to /contacts
   public createContact(contact: Contact) {  
     return this.http
-      .post(this.baseUrl + '/contacts', contact)
+      .post(this.baseUrl + '/contacts', contact, { headers: this.headers})
       .map(response => {
         console.log("dentro do CreateContact"+ response);
         return "haha";

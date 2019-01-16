@@ -34,7 +34,6 @@ export class CadastroPage {
               private formBuilder: FormBuilder
               ) {
                   this.formContact = this.formBuilder.group({
-                    id: [],
                     name: [],
                     email: [],
                     password: [],

@@ -19,7 +19,7 @@ export class MyApp {
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, _locations: LocationsProvider, _contacts: ContactsProvider) {
     _contacts.getContacts().subscribe((contacts: Contact[] )=>{
       this.contacts = contacts;
-      console.log("aquiii"+ contacts);
+      console.log("app.components, ver contatos retorno"+ JSON.stringify( contacts ));
     });
     
     
