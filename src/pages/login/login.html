@@ -20,22 +20,24 @@
     <ion-col col-12>
       <h1 center>JobLIKERS</h1>
     </ion-col>
+    
+    <form [formGroup]="formLogin" (ngSubmit)="login()" >
+      <ion-list>
 
-    <ion-list>
+        <ion-item>
+          <ion-label stacked>Email</ion-label>
+          <ion-input type="text" formControlName="email" name="genre"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-label stacked>Username</ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-label stacked>Password</ion-label>
+          <ion-input type="password" formControlName="password" name="genre"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-label stacked>Password</ion-label>
-        <ion-input type="password"></ion-input>
-      </ion-item>
+      </ion-list>
 
-    </ion-list>
-
-    <div padding>
-      <button ion-button full color="sky" [navPush]="listaPage">ENTRAR</button>
-    </div>
+      <div padding>
+        <button ion-button type="submit" full color="sky" [disabled]="!formLogin.valid">ENTRAR</button>
+      </div>
+    </form>   
 </ion-content>

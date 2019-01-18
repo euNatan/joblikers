@@ -7,6 +7,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Facebook } from '@ionic-native/facebook';
 import { Network } from '@ionic-native/network';
 import { Geolocation } from '@ionic-native/geolocation';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -20,6 +21,7 @@ import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
 import { ConnectivityProvider } from '../providers/connectivity/connectivity';
 import { ContactsProvider } from '../providers/contacts/contacts';
 import { Contact } from '../models/contact'
+import { SessionProvider } from '../providers/session/session';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { Contact } from '../models/contact'
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -51,7 +54,8 @@ import { Contact } from '../models/contact'
     Network,
     Geolocation,
     { provide: ErrorHandler, useClass: IonicErrorHandler}, LocationsProvider, GoogleMapsProvider, ConnectivityProvider,
-    ContactsProvider, 
+    ContactsProvider,
+    SessionProvider, 
   ]
 })
 export class AppModule {}

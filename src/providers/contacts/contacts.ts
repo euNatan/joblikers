@@ -34,7 +34,7 @@ export class ContactsProvider {
     return this.http
       .get(this.baseUrl + '/contacts.json', { headers: this.headers} )
       .map(response => {
-        return response.map((contact) => new Contact(contact));
+        //return response.map((contact) => new Contact(contact));
       })
       .catch((err)=>{
           console.log(err);
@@ -44,7 +44,7 @@ export class ContactsProvider {
 
 
   // Sending a POST request to /contacts
-  public createContact(contact: Contact) {  
+  public createContact(contact: Contact) {
     return this.http
       .post(this.baseUrl + '/contacts', contact, { headers: this.headers})
       .map(response => {

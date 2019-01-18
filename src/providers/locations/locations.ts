@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 
@@ -8,6 +8,13 @@ export class LocationsProvider {
     data: any;
     cat: any;
     user: any;
+    baseUrl:string = "http://localhost:3000/api/v1";
+    headers = new HttpHeaders(
+    {
+        'Content-Type' : 'application/json',
+        'X-User-Email' : 'teste@teste.com',
+        'X-User-Token' : 'XNXJsstqSD5nEkp4NzG4'
+    });
     
     constructor(public http: HttpClient) {
 
@@ -83,15 +90,16 @@ export class LocationsProvider {
         return x * Math.PI / 180;
     }
 
+    
     public getCategorias(){
         if (this.cat) {
           return Promise.resolve(this.cat);
         }
-     
         return new Promise(resolve => {
-          this.http.get("http://localhost:3000/api/v1/categories.js")
+          this.http.get(this.baseUrl + '/categories.js', { headers: this.headers} )
             .map(res => res)
             .subscribe(data => {
+                console.log("data"+ data);
               this.cat = data;
               resolve(this.cat);
             });
