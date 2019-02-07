@@ -33,8 +33,8 @@ export class LoginPage {
       .login(this.formLogin.value)
       .subscribe(
         (data) => {
-          console.log("login page"+ JSON.stringify(data)); 
-          //this.navCtrl.push(ListaPage);  
+          //console.log("login page"+ JSON.stringify(data)); 
+          this.navCtrl.push(ListaPage);  
           //this.contacts = this.contacts.concat(newContact);
         }
       );

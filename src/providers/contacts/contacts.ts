@@ -48,7 +48,7 @@ export class ContactsProvider {
     return this.http
       .post(this.baseUrl + '/contacts', contact, { headers: this.headers})
       .map(response => {
-        console.log("dentro do CreateContact"+ response);
+        console.log("dentro do CreateContact"+ JSON.stringify(response));
         return "haha";
         //return new Contact(response);
       })

@@ -5,6 +5,7 @@ import { MapPage } from "../map/map";
 
 import { LocationsProvider } from '../../providers/locations/locations';
 import { SessionProvider } from '../../providers/session/session';
+import { Contact } from '../../models/contact'
 
 @Component({
   selector: 'page-lista',
@@ -32,8 +33,10 @@ export class ListaPage {
   }
 
   ionViewDidLoad() {
-    this.currentUser = this._sessions.get();
-    console.log(this.currentUser);
+    this._sessions.get()
+        .then(res => {
+            this.currentUser = new Contact(res);
+    });
   }
 
 }
